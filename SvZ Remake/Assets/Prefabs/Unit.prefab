@@ -125,19 +125,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe2d19d062808b40b093b874189e9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    objType: 1
+    maxHealth: 100
+    currentHealth: 0
+    meleeDamage: 10
+    rangedDamage: 10
+    currentSpeed: 0
+    defaultSpeed: 1
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 512
-  startTimeBtwAttack: 1
+  projectilePrefab: {fileID: 0}
   meleeAttackPos: {fileID: 3376728578024127604}
   meleeAttackRangeX: 1.25
   meleeAttackRangeY: 1.25
+  startTimeBtwAttack: 1
   enemiesToShoot: []
-  stats:
-    maxHealth: 0
-    currentHealth: 0
-    damage: 0
-    defaultSpeed: 1
 --- !u!1 &883531221348985002
 GameObject:
   m_ObjectHideFlags: 0
