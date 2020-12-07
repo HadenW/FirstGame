@@ -81,63 +81,27 @@ public class AllySpawner : MonoBehaviour
         }        
     }
 
-    public void SpawnTank()
+    public void SpawnAlly(GameObject _prefab, int _cost)
     {
-        AllyType type;
-
-        type = allies[0].type;
-
         if (gameManager.state == GameState.UPGRADING)
         {
 
         }
         else if (gameManager.state != GameState.UPGRADING)
         {
-            if (type == AllyType.TANK)
+            if (spawnValue >= _cost)
             {
-                if (spawnValue >= allies[0].spawnCost)
-                {
-                    GameObject obj = Instantiate(allies[0].prefab, spawnPoint.position, Quaternion.identity);
+                GameObject obj = Instantiate(_prefab);
+                obj.transform.position = spawnPoint.transform.position;
 
-                    spawnValue -= allies[0].spawnCost;
-                    spawnBar.SetCurrentValue(spawnValue);
-                }
-                else
-                {
-                    Debug.Log("Not Enough Spawning Points");
-                }
+                spawnValue -= _cost;
+                spawnBar.SetCurrentValue(spawnValue);
             }
-        }              
-
-        // ----- Not Needed Proper Function Above -----
-
-        /*
-        for (int i = 0; i < allies.Length; i++)
-        {
-            if (gameManager.state == GameState.UPGRADING)
+            else
             {
-                break;
-            }
-
-            type = allies[i].type;
-
-            if (type == AllyType.TANK)
-            {
-                if (spawnValue >= allies[i].spawnCost)
-                {
-                    GameObject obj = Instantiate(allies[i].prefab, spawnPoint.position, Quaternion.identity);
-                    //obj.GetComponent<TankAlly>().SetStats(allies[i]);
-
-                    spawnValue -= allies[i].spawnCost;
-                    spawnBar.SetCurrentValue(spawnValue);
-                }
-                else
-                {
-                    Debug.Log("Not Enough Spawning Points");
-                }
+                Debug.Log("Not Enough Spawn Points");
             }
         }
-        */
     }
 
     public void UpdateButtons()
@@ -154,7 +118,7 @@ public class AllySpawner : MonoBehaviour
         {
             GameObject lButton = Instantiate(allyButtonPrefab, buttonParentUI.transform);
             lButton.transform.SetParent(buttonParentUI.transform, false);
-            lButton.GetComponent<SetSpawnButtonValues>().SetValues(allies[i].pawnName, allies[i].spawnCost);
+            lButton.GetComponent<SetSpawnButtonValues>().SetValues(allies[i].pawnName, allies[i].spawnCost, allies[i].prefab);
             allyUIButtons.Add(lButton);
         }
     }
