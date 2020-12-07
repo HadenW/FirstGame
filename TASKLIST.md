@@ -24,6 +24,6 @@ LISTED: 12/04/2020 | STATUS: NOT STARTED | FINISHED: TBA **
 - Pawns attack ranges for both melee and ranged should adjust according when setting values in the inspector
 
 
-LISTED: 12/06/2020 | STATUS: IN PROGRESS | FINISHED: TBA
+LISTED: 12/06/2020 | STATUS: COMPLETE | FINISHED: 12/07/2020
 
 - Pressing an ally spawn button needs to spawn the correct ally
